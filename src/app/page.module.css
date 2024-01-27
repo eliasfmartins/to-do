@@ -1,3 +1,6 @@
+*{
+    font-family: "Inter Tight";
+}
 .main {
   display: flex;
   flex-direction: column;
