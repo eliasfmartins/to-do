@@ -1,0 +1,36 @@
+div.product {
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+    width: 100%;
+    border: 1px dashed #D7DDE9;
+    ;
+    border-radius: 8px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+div.product:hover {
+    border: 1px dashed transparent;
+    transition: 0.5s;
+    background: #F7F9FD;
+}
+
+
+
+span {
+    margin: 0 16px;
+}
+
+span.tarefa-concluida {
+    text-decoration: line-through;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.trash:hover {
+    fill: #ff0000;
+
+}
