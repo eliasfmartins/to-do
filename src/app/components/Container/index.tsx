@@ -39,14 +39,18 @@ export const Container = () => {
     }
     const handleAddTarefa = () => {
         if (novaTarefa.trim() !== '') {
-            setTarefas((prevTarefas) => [
-                ...prevTarefas,
-                { id: 6, descricao: novaTarefa, status: true },
-            ]);
-            setNovaTarefa('');
-            closeModal();
+          const novoId = tarefas.length > 0 ? tarefas[tarefas.length - 1].id + 1 : 1;
+      
+          setTarefas((prevTarefas) => [
+            ...prevTarefas,
+            { id: novoId, descricao: novaTarefa, status: true },
+          ]);
+      
+          setNovaTarefa('');
+          closeModal();
         }
-    };
+      };
+      
     const handleDeleteTarefa = () => {
         // Implemente a lógica para excluir a tarefa
         // Pode ser necessário passar um identificador único para cada tarefa
