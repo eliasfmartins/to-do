@@ -23,15 +23,15 @@ export const Container = () => {
 
   const [tarefas, setTarefas] = useState<TarefasProps[]>(initialTarefas);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [deletemodal, setDeleteModal] = useState(false);
+  const [deletemodal, setDeleteModal] = useState<number | null>(null);
   const [novaTarefa, setNovaTarefa] = useState('');
 
   const openModal = () => {
     setModalIsOpen(true);
   };
 
-  const openModalDelete = () => {
-    setDeleteModal(true);
+  const openModalDelete = (id: number) => {
+    setDeleteModal(id);
   };
 
   const closeModal = () => {
@@ -39,7 +39,7 @@ export const Container = () => {
   };
 
   const closeModalDelete = () => {
-    setDeleteModal(false);
+    setDeleteModal(null);
   };
 
   const handleAddTarefa = () => {
@@ -57,8 +57,11 @@ export const Container = () => {
   };
 
   const handleDeleteTarefa = () => {
-    setTarefas((prevTarefas) => prevTarefas.filter((tarefa) => tarefa.id !== deletemodal));
-    setDeleteModal(false);
+    if (deletemodal !== null) {
+      setTarefas((prevTarefas) => prevTarefas.filter((tarefa) => tarefa.id !== deletemodal));
+      setDeleteModal(null);
+      closeModalDelete();
+    }
   };
 
   return (
@@ -74,7 +77,7 @@ export const Container = () => {
                     key={tarefa.id}
                     tarefa={tarefa.descricao}
                     status={tarefa.status}
-                    openModalDelete={() => openModalDelete()}
+                    openModalDelete={() => openModalDelete(tarefa.id)}
                   />
                 );
               }
@@ -93,7 +96,7 @@ export const Container = () => {
                     key={tarefa.id}
                     tarefa={tarefa.descricao}
                     status={tarefa.status}
-                    openModalDelete={() => openModalDelete()}
+                    openModalDelete={() => openModalDelete(tarefa.id)}
                   />
                 );
               }
@@ -104,7 +107,7 @@ export const Container = () => {
       <button className='add' onClick={openModal}>
         Adicionar nova tarefa
       </button>
-      <CustomModal isOpen={modalIsOpen} onClose={closeModal} deleteModal={false}>
+      <CustomModal isOpen={modalIsOpen} onClose={closeModal} deleteModal={false} onConfirm={handleAddTarefa}>
         <h2>Nova tarefa</h2>
         <label htmlFor="to-do" className='label'>
           Título
@@ -117,10 +120,9 @@ export const Container = () => {
           />
         </label>
       </CustomModal>
-      <CustomModal isOpen={deletemodal} onClose={closeModalDelete} deleteModal={true}>
+      <CustomModal isOpen={deletemodal !== null} onClose={closeModalDelete} deleteModal={true} onConfirm={handleDeleteTarefa}>
         <h2>Deletar tarefa</h2>
         <p>Tem certeza que você deseja deletar essa tarefa?</p>
-        <button onClick={handleDeleteTarefa}>Sim</button>
       </CustomModal>
     </main>
   );
