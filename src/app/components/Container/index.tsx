@@ -6,17 +6,18 @@ import { Tarefa } from '../Tarefa/index';
 import CustomModal from '@/app/Moda';
 export const Container = () => {
     interface TarefasProps {
+        id: number;
         descricao: string,
         status: boolean
     }
     const initialTarefas = [
-        { descricao: 'Lavar as mãos', status: true },
-        { descricao: 'Lavar a louça', status: true },
-        { descricao: 'Lavar a louça', status: true },
-        { descricao: 'Fazer um bolo', status: false },
-        { descricao: 'Lavar a louça', status: false },
-        { descricao: 'Lavar a louça', status: true },
-        { descricao: 'Lavar a louça', status: false },
+        { id: 1, descricao: 'Lavar as mãos', status: true },
+        { id: 2, descricao: 'Lavar a louça', status: true },
+        { id: 3, descricao: 'Lavar a louça', status: true },
+        { id: 4, descricao: 'Fazer um bolo', status: false },
+        { id: 5, descricao: 'Lavar a louça', status: false },
+        { id: 6, descricao: 'Lavar a louça', status: true },
+        { id: 6, descricao: 'Lavar a louça', status: false },
     ];
     const [tarefas, setTarefas] = useState<TarefasProps[]>(initialTarefas)
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -40,7 +41,7 @@ export const Container = () => {
         if (novaTarefa.trim() !== '') {
             setTarefas((prevTarefas) => [
                 ...prevTarefas,
-                { descricao: novaTarefa, status: true },
+                { id: 6, descricao: novaTarefa, status: true },
             ]);
             setNovaTarefa('');
             closeModal();
