@@ -12,7 +12,7 @@ export const Container = () => {
   }
 
   const initialTarefas: TarefasProps[] = [
-    { id: 1, descricao: 'Lavar as mãos', status: true },
+    { id: 1, descricao: 'Lavar as mãos', status: false },
     { id: 2, descricao: 'Lavar a louça', status: true },
     { id: 3, descricao: 'Lavar a louça', status: true },
     { id: 4, descricao: 'Fazer um bolo', status: false },
@@ -63,6 +63,15 @@ export const Container = () => {
       closeModalDelete();
     }
   };
+  const handleToggleStatus = (id: number) => {
+    setTarefas((prevTarefas) =>
+      prevTarefas.map((tarefa) =>
+        tarefa.id === id ? { ...tarefa, status: !tarefa.status } : tarefa
+      )
+    );
+  };
+  
+ 
 
   return (
     <main>
@@ -74,10 +83,12 @@ export const Container = () => {
               if (tarefa.status) {
                 return (
                   <Tarefa
+                    id={tarefa.id}
                     key={tarefa.id}
                     tarefa={tarefa.descricao}
                     status={tarefa.status}
                     openModalDelete={() => openModalDelete(tarefa.id)}
+                    onToggleStatus={() => handleToggleStatus(tarefa.id)}
                   />
                 );
               }
@@ -93,10 +104,12 @@ export const Container = () => {
               if (!tarefa.status) {
                 return (
                   <Tarefa
+                    id={tarefa.id}
                     key={tarefa.id}
                     tarefa={tarefa.descricao}
                     status={tarefa.status}
                     openModalDelete={() => openModalDelete(tarefa.id)}
+                    onToggleStatus={() => handleToggleStatus(tarefa.id)}
                   />
                 );
               }
