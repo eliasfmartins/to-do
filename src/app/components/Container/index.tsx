@@ -70,8 +70,8 @@ export const Container = () => {
       )
     );
   };
-  
- 
+
+
 
   return (
     <main>
@@ -79,7 +79,7 @@ export const Container = () => {
         <h2>Suas tarefas de hoje</h2>
         <div className='a-fazer'>
           <div className="tarefas">
-            {tarefas.map((tarefa) => {
+            {tarefas.every((tarefa) => tarefa.status == false) ? <p>Finalizou tudo heim tu  e o bixao mermo</p> : tarefas.map((tarefa) => {
               if (tarefa.status) {
                 return (
                   <Tarefa
@@ -100,9 +100,11 @@ export const Container = () => {
 
         <div className='feitas'>
           <div className="tarefas">
-            {tarefas.map((tarefa) => {
-              if (!tarefa.status) {
-                return (
+            {tarefas.every((tarefa) => tarefa.status) ? (
+              <p>Fez nada heim fera ... e da onde nao se espera nada que nao sai poha nenhuma enfim hipocrisia</p>
+            ) : (
+              tarefas.map((tarefa) => (
+                !tarefa.status && (
                   <Tarefa
                     id={tarefa.id}
                     key={tarefa.id}
@@ -111,9 +113,9 @@ export const Container = () => {
                     openModalDelete={() => openModalDelete(tarefa.id)}
                     onToggleStatus={() => handleToggleStatus(tarefa.id)}
                   />
-                );
-              }
-            })}
+                )
+              ))
+            )}
           </div>
         </div>
       </div>
