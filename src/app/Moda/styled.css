@@ -89,6 +89,34 @@
 button {
     cursor: pointer;
 }
+button.add {
+    display: flex;
+    width: 450px;
+    height: 51px;
+    padding: 16px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+    transition: 300ms;
+    border: none;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.32px;
+    margin: 40px auto;
+}
+
+button.add:hover {
+    background: linear-gradient(180deg, #0796D3 0%, #53C0F0 68.65%);
+    transition: 1s;
+
+}
+
 
 .delete-modal {
     display: flex;
