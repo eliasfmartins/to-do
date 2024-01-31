@@ -69,6 +69,15 @@
     background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
     border: none;
     color: #fff;
+    transition: 1s;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.add-modal :hover {
+    transition: 1s;
+    background: linear-gradient(180deg, #0796D3 100%, #53C0F0 68.65%);
 }
 
 .button-box {
@@ -77,15 +86,29 @@
     gap: 1rem;
 }
 
+button {
+    cursor: pointer;
+}
+
 .delete-modal {
     display: flex;
     padding: 16px 24px;
     justify-content: center;
     align-items: center;
+    font-weight: 600;
     gap: 8px;
     flex: 1 0 0;
     border-radius: 8px;
+    font-weight: 600;
     border: none;
     color: white;
     background: linear-gradient(90deg, #D30707 0%, #F05353 68.65%);
+    transition: 1s;
+    cursor: pointer;
+
+}
+
+.delete-modal:hover {
+    background: linear-gradient(180deg, #D30707 0%, #F05353 68.65%);
+    transition: 1s;
 }

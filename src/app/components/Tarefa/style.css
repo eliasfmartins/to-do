@@ -30,7 +30,3 @@ span.tarefa-concluida {
     color: rgba(0, 0, 0, 0.54);
 }
 
-.trash:hover {
-    fill: #ff0000;
-
-}

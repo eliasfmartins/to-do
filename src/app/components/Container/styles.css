@@ -41,6 +41,14 @@
     background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
     border: none;
     color: #FFF;
+    font-weight: 600;
+
+    transition: 1s;
+}
+
+.nova-tarefa :hover {
+    transition: 1s;
+    background: linear-gradient(180deg, #0796D3 0%, #53C0F0 68.65%);
 }
 
 .a-fazer,
@@ -59,12 +67,19 @@ button.add {
     flex-shrink: 0;
     border-radius: 8px;
     background: linear-gradient(90deg, #0796D3 0%, #53C0F0 68.65%);
+    transition: 300ms;
     border: none;
     color: #FFF;
     font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: -0.32px;
     margin: 40px auto;
+}
+
+button.add:hover {
+    background: linear-gradient(180deg, #0796D3 0%, #53C0F0 68.65%);
+    transition: 1s;
+
 }
